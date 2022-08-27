@@ -10,36 +10,7 @@ app.use(express.urlencoded({
   extended: false
 }))
 
-app.get('/', (req, res) => {
-  res.send(`
-  <input type="text" id='input'/>
-  <button id='send'>SEND</button>
-  <script>
-    const btn = document.getElementById('send')
-    const input = document.getElementById('input')
-    function codeBreaker(value){
-      const post = JSON.stringify({
-        guess: value
-      })
 
-      const url = "http://localhost:3000/codebreaker"
-      let xhr = new XMLHttpRequest()
- 
-      xhr.open('POST', url, true)
-      xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
-      xhr.send(post);
- 
-      xhr.onload = function () {
-        alert(xhr.response)
-      }
-    }
-
-    btn.addEventListener('click', ()=>{
-      codeBreaker(input.value)
-    })
-  </script>
-  `);
-})
 
 app.post('/codebreaker', (req, res) => {
   const { guess } = req.body
