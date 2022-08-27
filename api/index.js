@@ -31,7 +31,6 @@ app.get('/codebreaker', (req, res) => {
   const secret = codeBreaker.getSecret()
   res.status(200).json({
     res: 'Secret updated',
-    secret
   })
 })
 
